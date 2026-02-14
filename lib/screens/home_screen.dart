@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 import 'package:http_sample/controller/student_controller.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,81 +14,145 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Student Home")),
+      appBar: AppBar(title: const Text("Student Home")),
 
-      body: Column(
-        children: [
-          /// 🔹 TEXTFIELDS
-          TextField(
-            controller: nameController,
-            decoration: InputDecoration(labelText: "Name"),
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
 
-          TextField(
-            controller: emailController,
-            decoration: InputDecoration(labelText: "Email"),
-          ),
+            /// 🔹 NAME FIELD
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(
+                labelText: "Full Name",
+                prefixIcon: const Icon(Icons.person),
+                filled: true,
+                fillColor: Colors.grey.shade100,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide:
+                      const BorderSide(color: Colors.blue, width: 2),
+                ),
+              ),
+            ),
 
-          TextField(
-            controller: courseController,
-            decoration: InputDecoration(labelText: "Course"),
-          ),
+            const SizedBox(height: 20),
 
-          /// 🔥 ADD BUTTON (ADD HERE)
-          ElevatedButton(
-            onPressed: () {
-              controller.addStudent(
-                nameController.text,
-                emailController.text,
-                courseController.text,
-              );
+            /// 🔹 EMAIL FIELD
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(
+                labelText: "Email Address",
+                prefixIcon: const Icon(Icons.email),
+                filled: true,
+                fillColor: Colors.grey.shade100,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide:
+                      const BorderSide(color: Colors.blue, width: 2),
+                ),
+              ),
+            ),
 
-              nameController.clear();
-              emailController.clear();
-              courseController.clear();
-            },
-            child: Text("Add Student"),
-          ),
+            const SizedBox(height: 20),
 
-          /// 🔹 STUDENT LIST
-          Expanded(
-            child: Obx(() {
-              if (controller.studentList.isEmpty) {
-                return Center(child: Text("No Student Found"));
-              }
+            /// 🔹 COURSE FIELD
+            TextField(
+              controller: courseController,
+              decoration: InputDecoration(
+                labelText: "Course Name",
+                prefixIcon: const Icon(Icons.menu_book),
+                filled: true,
+                fillColor: Colors.grey.shade100,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide:
+                      const BorderSide(color: Colors.blue, width: 2),
+                ),
+              ),
+            ),
 
-              return ListView.builder(
-                itemCount: controller.studentList.length,
-                itemBuilder: (context, index) {
-                  var student = controller.studentList[index];
+            const SizedBox(height: 20),
 
-                  return ListTile(
-                    title: Text(student.name),
-                    subtitle: Text(student.course),
-
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete, color: Colors.red),
-                      onPressed: () {
-                        Get.defaultDialog(
-                          title: "Delete",
-                          middleText:
-                              "Are you sure you want to delete this student?",
-                          textConfirm: "Yes",
-                          textCancel: "No",
-                          confirmTextColor: Colors.white,
-                          onConfirm: () {
-                            controller.deleteStudent(student.id!);
-                            Get.back(); // close dialog
-                          },
-                        );
-                      },
-                    ),
+            /// 🔥 ADD BUTTON
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  controller.addStudent(
+                    nameController.text,
+                    emailController.text,
+                    courseController.text,
                   );
+
+                  nameController.clear();
+                  emailController.clear();
+                  courseController.clear();
                 },
-              );
-            }),
-          ),
-        ],
+                child: const Text("Add Student"),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            /// 🔹 STUDENT LIST
+            Expanded(
+              child: Obx(() {
+                if (controller.studentList.isEmpty) {
+                  return const Center(
+                      child: Text("No Student Found"));
+                }
+
+                return ListView.builder(
+                  itemCount: controller.studentList.length,
+                  itemBuilder: (context, index) {
+                    var student = controller.studentList[index];
+
+                    return Card(
+                      margin: const EdgeInsets.symmetric(vertical: 5),
+                      child: ListTile(
+                        title: Text(student.name),
+                        subtitle: Text(student.course),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.delete,
+                              color: Colors.red),
+                          onPressed: () {
+                            Get.defaultDialog(
+                              title: "Delete",
+                              middleText:
+                                  "Are you sure you want to delete this student?",
+                              textConfirm: "Yes",
+                              textCancel: "No",
+                              confirmTextColor: Colors.white,
+                              onConfirm: () {
+                                controller
+                                    .deleteStudent(student.id!);
+                                Get.back();
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }),
+            ),
+          ],
+        ),
       ),
     );
   }
