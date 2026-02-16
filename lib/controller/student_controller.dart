@@ -4,7 +4,7 @@ import 'package:http_sample/services/api_service.dart';
 
 class StudentController extends GetxController {
 
-  var studentList = <Student>[].obs;   // ✅ correct
+  var studentList = <Student>[].obs;  
   var isLoading = false.obs;
 
   @override
@@ -13,14 +13,15 @@ class StudentController extends GetxController {
     super.onInit();
   }
 
+
   void addStudent(String name, String email, String course) async {
   isLoading.value = true;
 
   bool success =
-      await ApiService.insertStudent(name, email, course);
+      await ApiService.insertStudent(name, email, course, "Admin");
 
   if (success) {
-    fetchStudents(); // 🔥 refresh list
+    fetchStudents(); 
   }
 
   isLoading.value = false;
@@ -49,7 +50,7 @@ class StudentController extends GetxController {
   bool success = await ApiService.deleteStudent(id);
 
   if (success) {
-    fetchStudents();  // 🔥 refresh list
+    fetchStudents();  
   }
 }
 

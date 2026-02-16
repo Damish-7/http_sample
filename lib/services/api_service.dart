@@ -5,8 +5,6 @@ class ApiService {
  static const baseUrl = "http://localhost:8888/student_api/";
 
 
-
-
   static Future<List<dynamic>?> getStudents() async {
   final response = await http.get(
     Uri.parse("${baseUrl}fetch.php"),
@@ -24,23 +22,28 @@ class ApiService {
 
 
   static Future<bool> insertStudent(
-    String name, String email, String course) async {
+    String name,
+    String email,
+    String course,
+    String createdBy) async {
+
+      
 
   final response = await http.post(
     Uri.parse("${baseUrl}insert.php"),
     headers: {"Content-Type": "application/json"},
     body: jsonEncode({
-      "name": name,
-      "email": email,
-      "course": course,
-    }),
+  "name": name,
+  "email": email,
+  "course": course,
+  "created_by": createdBy,
+}),
   );
 
   if (response.statusCode == 200) {
     var data = jsonDecode(response.body);
     return data["status"] == "success";
   }
-
   return false;
 }
 

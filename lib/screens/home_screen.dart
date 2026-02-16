@@ -20,7 +20,6 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-
             /// 🔹 NAME FIELD
             TextField(
               controller: nameController,
@@ -35,8 +34,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide:
-                      const BorderSide(color: Colors.blue, width: 2),
+                  borderSide: const BorderSide(color: Colors.blue, width: 2),
                 ),
               ),
             ),
@@ -57,8 +55,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide:
-                      const BorderSide(color: Colors.blue, width: 2),
+                  borderSide: const BorderSide(color: Colors.blue, width: 2),
                 ),
               ),
             ),
@@ -79,8 +76,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide:
-                      const BorderSide(color: Colors.blue, width: 2),
+                  borderSide: const BorderSide(color: Colors.blue, width: 2),
                 ),
               ),
             ),
@@ -112,8 +108,7 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: Obx(() {
                 if (controller.studentList.isEmpty) {
-                  return const Center(
-                      child: Text("No Student Found"));
+                  return const Center(child: Text("No Student Found"));
                 }
 
                 return ListView.builder(
@@ -125,10 +120,15 @@ class HomeScreen extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(vertical: 5),
                       child: ListTile(
                         title: Text(student.name),
-                        subtitle: Text(student.course),
+                        isThreeLine: true, // Allocates space for 3 lines total
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment
+                              .start, // Aligns text to the left
+                          children: [Text(student.course), Text(student.email)],
+                        ),
+
                         trailing: IconButton(
-                          icon: const Icon(Icons.delete,
-                              color: Colors.red),
+                          icon: const Icon(Icons.delete, color: Colors.red),
                           onPressed: () {
                             Get.defaultDialog(
                               title: "Delete",
@@ -138,8 +138,7 @@ class HomeScreen extends StatelessWidget {
                               textCancel: "No",
                               confirmTextColor: Colors.white,
                               onConfirm: () {
-                                controller
-                                    .deleteStudent(student.id!);
+                                controller.deleteStudent(student.id!);
                                 Get.back();
                               },
                             );
