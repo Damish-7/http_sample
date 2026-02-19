@@ -10,7 +10,7 @@ class Student {
     required this.name,
     required this.email,
     required this.course,
-  }) ;
+  });
 
   factory Student.fromJson(Map<String, dynamic> json) {
     return Student(
@@ -20,4 +20,6 @@ class Student {
       course: json['course'],
     );
   }
+
+  
 }

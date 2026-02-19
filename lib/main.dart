@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http_sample/controller/student_controller.dart';
 import 'package:http_sample/screens/home_screen.dart';
 
 void main() {
@@ -13,6 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: BindingsBuilder((){
+        Get.put(StudentController());
+      }),
       debugShowCheckedModeBanner: false
       ,
       title: 'Flutter Demo',

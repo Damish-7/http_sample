@@ -4,8 +4,12 @@ import 'package:http_sample/services/api_service.dart';
 
 class StudentController extends GetxController {
 
+  final String baseUrl = "http://127.0.0.1:3000/students";
+
   var studentList = <Student>[].obs;  
   var isLoading = false.obs;
+  
+  
 
   @override
   void onInit() {
@@ -51,6 +55,20 @@ class StudentController extends GetxController {
 
   if (success) {
     fetchStudents();  
+  }
+}
+void updateStudent(
+  String id,
+  String name,
+  String email,
+  String course,
+) async {
+
+  bool success =
+      await ApiService.updateStudent(id, name, email, course);
+
+  if (success) {
+    fetchStudents();
   }
 }
 
