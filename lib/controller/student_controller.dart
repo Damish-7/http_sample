@@ -4,13 +4,10 @@ import 'package:http_sample/services/api_service.dart';
 
 class StudentController extends GetxController {
 
-  final String baseUrl = "http://127.0.0.1:3000/students";
-
   var studentList = <Student>[].obs;  
   var isLoading = false.obs;
   
   
-
   @override
   void onInit() {
     fetchStudents();
