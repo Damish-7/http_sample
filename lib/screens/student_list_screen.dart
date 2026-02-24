@@ -17,11 +17,13 @@ class StudentListScreen extends StatelessWidget {
         return const Center(child: Text("no students found"));
       }
       return ListView.builder(
+      
         itemCount: controller.studentList.length,
         itemBuilder: (context, index) {
           var student = controller.studentList[index];
 
           return Card(
+            color: const Color.fromARGB(255, 215, 238, 239),
             child: ListTile(
               title: Text(student.name),
               subtitle: Text("${student.course} \n${student.email}"),

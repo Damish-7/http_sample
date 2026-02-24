@@ -53,7 +53,8 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
 Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
-      title: Text(isEdit ? "Edit Student" : "Add Student"),
+      title: Text(isEdit ? "Edit Student" : "ADD STUDENT"),
+      backgroundColor: const Color.fromARGB(255, 151, 208, 235),
     ),
     body: Padding(
       padding: const EdgeInsets.all(20),
@@ -90,7 +91,7 @@ Widget build(BuildContext context) {
               const SizedBox(height: 20),
       
               DropdownButtonFormField<String>(
-                decoration: const InputDecoration(labelText: " courses"),
+                decoration: const InputDecoration(labelText: " course"),
                 value: selectedCourse,
                 items: courses
                     .map((e) => DropdownMenuItem(value: e, child: Text(e)))
