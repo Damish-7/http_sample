@@ -16,7 +16,8 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Login")),
+      
+      appBar: AppBar(title: const Text("STUDENT PORTAL")),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Form(
@@ -24,6 +25,7 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+
               const SizedBox(height: 20),
 
               Image.asset(
@@ -50,6 +52,7 @@ class LoginScreen extends StatelessWidget {
                   return null;
                 },
               ),
+              
               const SizedBox(height: 20),
               TextFormField(
                 controller: passwordController,

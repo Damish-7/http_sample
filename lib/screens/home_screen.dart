@@ -30,10 +30,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("STUDENT MANAGEMENT"),
+        title: const Text("STUDENT PORTAL !"),
+        backgroundColor: const Color.fromARGB(255, 186, 89, 80),
         actions: [
           IconButton(
-            icon: const Icon(Icons.logout),
+            icon: const Icon(Icons.logout, color: Colors.white),
             onPressed: () {
               Get.defaultDialog(
                 title: "Logout",
@@ -57,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: pages[currentIndex],
 
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 78, 179, 188),
+        backgroundColor: const Color.fromARGB(255, 186, 89, 80),
         currentIndex: currentIndex,
         onTap: (index) {
           setState(() {
@@ -66,11 +67,11 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_add),
-            label: "Add student ",
+            icon: Icon(Icons.person_add, color: Colors.white),
+            label: "Add student ", 
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
+            icon: Icon(Icons.list, color: Colors.white),
             label: "Student List",
           ),
         ],

@@ -24,6 +24,7 @@ class AuthController extends GetxController {
       Get.offAll(() => const HomeScreen());
     } else {
       Get.snackbar("Error", "Invalid credentials");
+      
     }
   }
 

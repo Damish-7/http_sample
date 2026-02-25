@@ -23,7 +23,7 @@ class StudentListScreen extends StatelessWidget {
           var student = controller.studentList[index];
 
           return Card(
-            color: const Color.fromARGB(255, 215, 238, 239),
+            color: const Color.fromARGB(255, 249, 235, 222),
             child: ListTile(
               title: Text(student.name),
               subtitle: Text("${student.course} \n${student.email}"),

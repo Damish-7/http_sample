@@ -16,7 +16,9 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Register")),
+      appBar: AppBar(title: const Text("Register")
+      
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Form(
@@ -24,7 +26,6 @@ class RegisterScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
               TextFormField(
                 controller: emailController,
                 decoration: const InputDecoration(labelText: "Email"),
@@ -34,6 +35,7 @@ class RegisterScreen extends StatelessWidget {
                   }
                   return null;
                 },
+              
               ),
 
               const SizedBox(height: 20),
