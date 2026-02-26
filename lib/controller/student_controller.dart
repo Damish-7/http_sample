@@ -4,7 +4,8 @@ import 'package:http_sample/services/api_service.dart';
 
 class StudentController extends GetxController {
 
-  var studentList = <Student>[].obs;  
+  var studentList = <Student>[].obs; 
+  var filteredList = <Student>[].obs; 
   var isLoading = false.obs;
   
   
@@ -43,8 +44,23 @@ class StudentController extends GetxController {
     } catch (e) {
       print("ERROR: $e");
     }
-
+    filteredList.assignAll(studentList);
     isLoading.value = false;
+  }
+
+  //search
+  void searchStudent(String query){
+    if (query.isEmpty) {
+      filteredList.assignAll(studentList);
+    } else {
+      filteredList.assignAll(
+        studentList.where((student) => 
+        student.name.toLowerCase().contains(query.toLowerCase()) ||
+        student.email.toLowerCase().contains(query.toLowerCase()) ||
+        student.course.toLowerCase().contains(query.toLowerCase())
+        ),
+      );
+    }
   }
 
   void deleteStudent(String id) async {

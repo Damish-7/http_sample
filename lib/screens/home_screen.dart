@@ -4,6 +4,7 @@ import 'package:http_sample/controller/auth_controller.dart';
 import 'package:http_sample/controller/student_controller.dart';
 import 'package:http_sample/screens/add_student_screen.dart';
 import 'package:http_sample/screens/student_list_screen.dart';
+import 'package:http_sample/utils/responsive_layout.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,12 +18,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int currentIndex = 0;
 
-  final pages = [const AddStudentScreen(), StudentListScreen()];
+  final pages = [
+    const AddStudentScreen(),
+    StudentListScreen(),
+  ];
 
   @override
   void initState() {
-    final StudentController controller = Get.find();
-
+    Get.put(StudentController()); // ensure controller exists
     super.initState();
   }
 
@@ -43,11 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 textConfirm: "Yes",
                 confirmTextColor: Colors.white,
                 onConfirm: () {
-                  Get.back(); // close dialog
+                  Get.back();
                   authController.logout();
-                },
-                onCancel: () {
-                  Get.back(); // close dialog
                 },
               );
             },
@@ -55,27 +55,76 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
 
-      body: pages[currentIndex],
+      // 🔽 RESPONSIVE BODY
+      body: ResponsiveLayout(
+        // 📱 MOBILE
+        mobile: pages[currentIndex],
 
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 186, 89, 80),
-        currentIndex: currentIndex,
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_add, color: Colors.white),
-            label: "Add student ", 
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list, color: Colors.white),
-            label: "Student List",
-          ),
-        ],
+        // 📲 TABLET
+        tablet: Row(
+          children: [
+            _sideNavigation(),
+            Expanded(child: pages[currentIndex]),
+          ],
+        ),
+
+        // 💻 DESKTOP / WEB
+        desktop: Row(
+          children: [
+            _sideNavigation(),
+            Expanded(child: pages[currentIndex]),
+          ],
+        ),
       ),
+
+      // 🔽 BOTTOM NAV ONLY FOR MOBILE
+      bottomNavigationBar: MediaQuery.of(context).size.width < 600
+          ? BottomNavigationBar(
+              backgroundColor: const Color.fromARGB(255, 186, 89, 80),
+              currentIndex: currentIndex,
+              onTap: (index) {
+                setState(() {
+                  currentIndex = index;
+                });
+              },
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person_add, color: Colors.white),
+                  label: "Add Student",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.list, color: Colors.white),
+                  label: "Student List",
+                ),
+              ],
+            )
+          : null,
+    );
+  }
+
+  // 🔹 SIDE NAV FOR TABLET / DESKTOP
+  Widget _sideNavigation() {
+    return NavigationRail(
+      selectedIndex: currentIndex,
+      onDestinationSelected: (index) {
+        setState(() {
+          currentIndex = index;
+        });
+      },
+      labelType: NavigationRailLabelType.all,
+      backgroundColor: const Color.fromARGB(255, 186, 89, 80),
+      selectedIconTheme: const IconThemeData(color: Colors.white),
+      unselectedIconTheme: const IconThemeData(color: Colors.white70),
+      destinations: const [
+        NavigationRailDestination(
+          icon: Icon(Icons.person_add),
+          label: Text("Add Student"),
+        ),
+        NavigationRailDestination(
+          icon: Icon(Icons.list),
+          label: Text("Student List"),
+        ),
+      ],
     );
   }
 }
