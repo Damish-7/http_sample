@@ -15,7 +15,9 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("STUDENT PORTAL")),
+      appBar: AppBar(title: const Text("STUDENT PORTAL"),
+      backgroundColor: const Color.fromARGB(232, 113, 213, 241),
+      ),
 
       body: ResponsiveLayout(
         mobile: _loginContent(context, false),
@@ -42,7 +44,7 @@ class LoginScreen extends StatelessWidget {
                 children: [
 
                   Image.asset(
-                    "assets/images/logo.png",
+                    "assets/images/logo123.png",
                     height: isWide ? 180 : 140,
                     errorBuilder: (_, __, ___) =>
                         const Text("Image not found"),

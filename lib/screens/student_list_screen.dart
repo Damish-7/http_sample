@@ -73,7 +73,7 @@ class StudentListScreen extends StatelessWidget {
   //  STUDENT CARD
   Widget _studentCard(student) {
     return Card(
-      color: const Color.fromARGB(255, 249, 235, 222),
+      color: const Color.fromARGB(244, 253, 253, 189),
       child: ListTile(
         title: Text(student.name),
         subtitle: Text("${student.course}\n${student.email}"),

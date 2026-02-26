@@ -54,6 +54,7 @@ Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
       title: Text(isEdit ? "Edit Student" : "Fill the student details"),
+      backgroundColor: const Color.fromARGB(150, 254, 254, 202),
       
     ),
     body: Padding(

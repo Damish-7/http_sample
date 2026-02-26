@@ -23,8 +23,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+   
     
   debugShowCheckedModeBanner: false,
+
+   theme: ThemeData(
+        primaryColor: const Color.fromARGB(255, 242, 242, 182),
+        scaffoldBackgroundColor: const Color.fromARGB(150, 254, 254, 202),
+        
+      ),
 
   initialBinding: BindingsBuilder(() {
     Get.put(AuthController(), permanent: true);

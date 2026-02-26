@@ -17,7 +17,9 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Register")),
+      appBar: AppBar(title: const Text("Register"),
+      backgroundColor: const Color.fromARGB(232, 113, 213, 241),
+      ),
 
       body: ResponsiveLayout(
         mobile: _registerContent(context, false),
