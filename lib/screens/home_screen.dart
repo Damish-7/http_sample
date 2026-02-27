@@ -5,6 +5,7 @@ import 'package:http_sample/controller/student_controller.dart';
 import 'package:http_sample/screens/add_student_screen.dart';
 import 'package:http_sample/screens/student_list_screen.dart';
 import 'package:http_sample/utils/responsive_layout.dart';
+import 'package:http_sample/screens/dashboard_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,11 +15,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final AuthController authController = Get.put(AuthController());
+  final AuthController authController = Get.find<AuthController>();
 
   int currentIndex = 0;
 
   final pages = [
+    DashboardScreen(),
     const AddStudentScreen(),
     StudentListScreen(),
   ];
@@ -91,12 +93,16 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               items: const [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.person_add, color: Color.fromARGB(255, 3, 63, 111)),
-                  label: "Add Student",
+                  icon: Icon(Icons.dashboard, color: Colors.white),
+                  label: "Dashboard",
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.list, color: Color.fromARGB(255, 3, 63, 111)),
-                  label: "Student List",
+                  icon: Icon(Icons.person_add, color: Colors.white),
+                  label: "Add",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.list, color: Colors.white),
+                  label: "List",
                 ),
               ],
             )
@@ -119,11 +125,15 @@ class _HomeScreenState extends State<HomeScreen> {
       unselectedIconTheme: const IconThemeData(color: Colors.white70),
       destinations: const [
         NavigationRailDestination(
-          icon: Icon(Icons.person_add, color: Color.fromARGB(255, 3, 63, 111)),
+          icon: Icon(Icons.dashboard),
+          label: Text("Dashboard"),
+        ),
+        NavigationRailDestination(
+          icon: Icon(Icons.person_add),
           label: Text("Add Student"),
         ),
         NavigationRailDestination(
-          icon: Icon(Icons.list, color: Color.fromARGB(255, 3, 63, 111)),
+          icon: Icon(Icons.list),
           label: Text("Student List"),
         ),
       ],

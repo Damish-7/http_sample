@@ -86,5 +86,19 @@ void updateStudent(
 }
 
 
+// ADD BELOW YOUR EXISTING CODE
+
+int get totalStudents => studentList.length;
+
+Map<String, int> get courseStats {
+  Map<String, int> data = {};
+
+  for (var student in studentList) {
+    data[student.course] = (data[student.course] ?? 0) + 1;
+  }
+  return data;
+}
+
+
   
 }

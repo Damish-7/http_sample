@@ -29,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
     );
   }
 
-  // 🔹 SAME FORM, JUST RESPONSIVE
+  //  SAME FORM, JUST RESPONSIVE
   Widget _registerContent(BuildContext context, bool isWide) {
     return Center(
       child: SingleChildScrollView(
