@@ -7,6 +7,7 @@ import '../screens/login_screen.dart';
 class AuthController extends GetxController {
 
   var isLoading = false.obs;
+  var userRole = "".obs;
 
   // LOGIN
   Future<void> login(String email, String password) async {

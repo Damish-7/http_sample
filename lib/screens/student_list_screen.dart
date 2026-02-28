@@ -7,6 +7,7 @@ class StudentListScreen extends StatelessWidget {
   StudentListScreen({super.key});
 
   final StudentController controller = Get.find();
+  
 
   @override
   Widget build(BuildContext context) {

@@ -16,7 +16,7 @@ class DashboardScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-            // 🔢 TOTAL STUDENTS CARD
+            //  TOTAL STUDENTS CARD
             Card(
               color: Colors.blue.shade100,
               child: ListTile(

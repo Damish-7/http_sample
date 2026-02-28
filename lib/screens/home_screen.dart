@@ -15,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final AuthController authController = Get.find<AuthController>();
+  final AuthController authController = Get.put(AuthController());
 
   int currentIndex = 0;
 
