@@ -47,7 +47,7 @@ class DashboardScreen extends StatelessWidget {
 
             const SizedBox(height: 10),
 
-            // 🎓 COURSE STATS
+            //  COURSE STATS
             ...controller.courseStats.entries.map((entry) {
               return Card(
                 child: ListTile(
