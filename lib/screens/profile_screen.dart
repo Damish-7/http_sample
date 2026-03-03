@@ -196,7 +196,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           : const Icon(Icons.save_outlined),
                       label: Text(
                         profileController.isLoading.value
-                            ? "Saving..."
+                            ? "Saving..." 
                             : "Save Profile",
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),

@@ -78,7 +78,7 @@ class ProfileController extends GetxController {
   // ── PICK IMAGE (Web compatible) ───────────────────────────────────────
   Future<void> pickProfileImage() async {
     try {
-      print("🟡 Opening file picker...");
+      print(" --> Opening file picker...");
 
       final XFile? pickedFile = await _picker.pickImage(
         source: ImageSource.gallery, // on web, this opens file picker
@@ -87,7 +87,7 @@ class ProfileController extends GetxController {
       );
 
       if (pickedFile == null) {
-        print("🔴 No image selected");
+        print(" xx  No image selected");
         return;
       }
 
@@ -114,7 +114,7 @@ class ProfileController extends GetxController {
       );
 
       if (success) {
-        print("🟢 Image saved to DB");
+        print(" == Image saved to DB");
         Get.snackbar(
           "Photo Updated",
           "Profile picture changed successfully.",
@@ -193,8 +193,8 @@ class ProfileController extends GetxController {
     }
   }
 
-  // ── IMAGE SOURCE SHEET ────────────────────────────────────────────────
-  // On web there's only one option — file picker (no camera)
+  // ── IMAGE SOURCE SHEET ────On web there's only one option — file picker (no camera)
+  
   void showImageSourceSheet() {
     Get.bottomSheet(
       Container(
