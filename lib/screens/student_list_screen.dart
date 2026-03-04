@@ -54,7 +54,7 @@ class StudentListScreen extends StatelessWidget {
                   itemCount: controller.filteredList.length,
                   gridDelegate:
                       const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
+                    crossAxisCount: 2,
                     childAspectRatio: 3.2,
                     crossAxisSpacing: 12,
                     mainAxisSpacing: 12,
@@ -74,7 +74,7 @@ class StudentListScreen extends StatelessWidget {
   //  STUDENT CARD
   Widget _studentCard(student) {
     return Card(
-      color: const Color.fromARGB(244, 253, 253, 189),
+      color: const Color.fromARGB(244, 255, 255, 206),
       child: ListTile(
         title: Text(student.name),
         subtitle: Text("${student.course}\n${student.email}"),

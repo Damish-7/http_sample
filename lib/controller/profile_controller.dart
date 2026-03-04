@@ -44,7 +44,7 @@ class ProfileController extends GetxController {
     }
   }
 
-  // ── SYNC from API ─────────────────────────────────────────────────────
+  // ── SYNC from API ─────────────────────────────────────────────────────1
   Future<void> _syncFromApi() async {
     final data = await AuthApiService.getProfile(userEmail.value);
     if (data == null) return;
@@ -144,7 +144,7 @@ class ProfileController extends GetxController {
     }
   }
 
-  // ── SAVE PROFILE ──────────────────────────────────────────────────────
+  // ── SAVE PROFILE ──────────────────────────────────────────────────
   Future<void> saveProfile({
     required String name,
     required String dob,
