@@ -24,7 +24,7 @@ class ProfileController extends GetxController {
     loadProfile();
   }
 
-  // ── LOAD: SharedPrefs first, then sync from API ───────────────────────
+  //  LOAD: SharedPrefs first, then sync from API ───────────────────────
   Future<void> loadProfile() async {
     final prefs = await SharedPreferences.getInstance();
 
@@ -44,7 +44,7 @@ class ProfileController extends GetxController {
     }
   }
 
-  // ── SYNC from API ─────────────────────────────────────────────────────1
+  //SYNC from API ─────────────────────────────────────────────────────1
   Future<void> _syncFromApi() async {
     final data = await AuthApiService.getProfile(userEmail.value);
     if (data == null) return;
@@ -75,7 +75,7 @@ class ProfileController extends GetxController {
     }
   }
 
-  // ── PICK IMAGE (Web compatible) ───────────────────────────────────────
+  //  PICK IMAGE (Web compatible) ───────────────────────────────────────
   Future<void> pickProfileImage() async {
     try {
       print(" --> Opening file picker...");
@@ -144,7 +144,7 @@ class ProfileController extends GetxController {
     }
   }
 
-  // ── SAVE PROFILE ──────────────────────────────────────────────────
+  // SAVE PROFILE ──────────────────────────────────────────────────
   Future<void> saveProfile({
     required String name,
     required String dob,
@@ -193,7 +193,7 @@ class ProfileController extends GetxController {
     }
   }
 
-  // ── IMAGE SOURCE SHEET ────On web there's only one option — file picker (no camera)
+  // IMAGE SOURCE SHEET ────On web there's only one option — file picker (no camera)
   
   void showImageSourceSheet() {
     Get.bottomSheet(

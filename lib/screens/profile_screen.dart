@@ -72,7 +72,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           key: _formKey,
           child: Column(
             children: [
-              // ── Profile Photo ────────────────────────────────────────
+              // Profile Photo ────────────────────────────────────────
               Center(
                 child: Stack(
                   children: [
@@ -119,7 +119,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               const SizedBox(height: 28),
 
-              // ── Form Card ────────────────────────────────────────────
+              //Form Card ────────────────────────────────────────────
               Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16)),
@@ -181,7 +181,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               const SizedBox(height: 28),
 
-              // ── Save Button ──────────────────────────────────────────
+              // Save Button ──────────────────────────────────────────
               Obx(() => SizedBox(
                     width: double.infinity,
                     height: 50,
