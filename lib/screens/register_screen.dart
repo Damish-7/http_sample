@@ -110,6 +110,7 @@ class RegisterScreen extends StatelessWidget {
                                 emailController.text.trim(),
                                 passwordController.text.trim(),
                               );
+                              Durations.extralong1;
                             }
                           },
                           child: const Text("Register"),
